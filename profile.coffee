@@ -10,22 +10,6 @@ NeuroskySeqeuelizeModel = require 'sequelize-neurosky'
 indraDatabase = connectToIndraDatabase()
 NeuroskyReading = NeuroskySeqeuelizeModel.define(indraDatabase)
 
-
-MIDSgroup1 = 
-	start: '2015-05-09 23:31:57.419+00'
-	end: '2015-05-09 23:37:30.889+00'
-
-MIDSgroup2 = 
-	start: '2015-05-09 23:43:34.405+00'
-	end:'2015-05-09 23:48:30.35+00'
-
-idsGroup1 = _.map(
-	[334,389,497,523,604,613,659,677,695,721,749,758,244,235,433,640,172,587,226,361,442,505,703,190,424,415,127,136,488]
-	, (id) -> String(id))	
-idsGroup2 = _.map(
-	[118,262,280,325,343,370,398,532,541,569,578,631,668,686,253,299,154,514,145,208,596,712,271,352,307,316,406,730]	
-	, (id) -> String(id))	
-
 findAllSummaryStats = (ids, startTime, endTime, logName, db) ->
 
 	console.log 'log name is', logName
@@ -70,9 +54,28 @@ findAllSummaryStats = (ids, startTime, endTime, logName, db) ->
 			console.log 'error!', err 
 			recurse(ids))
 
+
+
+MIDSgroup1 = 
+	start: '2015-05-09 23:31:57.419+00'
+	end: '2015-05-09 23:37:30.889+00'
+
+MIDSgroup2 = 
+	start: '2015-05-09 23:43:34.405+00'
+	end:'2015-05-09 23:48:30.35+00'
+
+idsGroup1 = _.map(
+	[334,389,497,523,604,613,659,677,695,721,749,758,244,235,433,640,172,587,226,361,442,505,703,190,424,415,127,136,488]
+	, (id) -> String(id))	
+idsGroup2 = _.map(
+	[118,262,280,325,343,370,398,532,541,569,578,631,668,686,253,299,154,514,145,208,596,712,271,352,307,316,406,730]	
+	, (id) -> String(id))	
+
+logFilePath = './group1.csv'
+
 findAllSummaryStats(
 	idsGroup2
 	, MIDSgroup2.start
 	, MIDSgroup2.end
-	, './group2.csv'
+	, logFilePath
 	, indraDatabase)
