@@ -13,7 +13,7 @@ summaryStatistics = (rows) ->
 		# get the number of readings with good signal quality
 		numPerfectReadings: 
 			_.countBy(entries, 
-				(entry) -> entry.signal_quality > 0)
+				(entry) -> entry.signal_quality == 0)
 			.true
 		# average signal quality of all readings
 		averageSignalQuality:

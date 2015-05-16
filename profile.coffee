@@ -29,8 +29,7 @@ findAllSummaryStats = (ids, startTime, endTime, logName, db) ->
 		fs.appendFile(
 			logName
 			, format(id, summaryStats)
-			, (success) -> console.log('wrote', id)
-			, (err) -> console.log('err writing file!', err))
+			, (success) -> console.log('wrote', id))
 
 	recurse = (ids) ->
 		if ids.length > 1
@@ -71,11 +70,9 @@ idsGroup2 = _.map(
 	[118,262,280,325,343,370,398,532,541,569,578,631,668,686,253,299,154,514,145,208,596,712,271,352,307,316,406,730]	
 	, (id) -> String(id))	
 
-logFilePath = './group1.csv'
-
 findAllSummaryStats(
 	idsGroup2
 	, MIDSgroup2.start
 	, MIDSgroup2.end
-	, logFilePath
+	, './group.csv'
 	, indraDatabase)
