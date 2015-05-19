@@ -1,6 +1,6 @@
 moment = require('moment')
 
-function getEntriesBetween (time1, time2, userId, sequelizeModel, successCb, errorCb) {
+function getEntriesWithIDBetween (time1, time2, userId, sequelizeModel, successCb, errorCb) {
   sequelizeModel.findAll({
     where: {
       createdAt: {
@@ -14,4 +14,19 @@ function getEntriesBetween (time1, time2, userId, sequelizeModel, successCb, err
   .error(errorCb)
 }
 
-module.exports = getEntriesBetween 
+function getAllEntriesBetween (time1, time2, sequelizeModel, successCb, errorCb) {
+  sequelizeModel.findAll({
+    where: {
+      createdAt: {
+          $lt: time2 
+          , $gt: time1 
+      }
+    }
+  })
+  .then(successCb)
+  .error(errorCb)
+}
+
+
+exports.getEntriesWithIDBetween = getEntriesWithIDBetween 
+exports.getAllEntriesBetween = getAllEntriesBetween 

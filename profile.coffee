@@ -4,7 +4,7 @@ util = require 'util'
 
 connectToIndraDatabase = require './db_config.js'
 summaryStatistics = require './summaryStatistics.coffee'
-getEntriesBetween = require './getEntriesBetween.js'
+getEntriesWithIDBetween = require('./getEntriesBetween.js').getEntriesWithIDBetween
 NeuroskySeqeuelizeModel = require 'sequelize-neurosky'
 
 indraDatabase = connectToIndraDatabase()
@@ -38,7 +38,7 @@ findAllSummaryStats = (ids, startTime, endTime, logName, db) ->
 			console.log 'done'
 			db.close()
 
-	getEntriesBetween(
+	getEntriesWithIDBetween(
 		startTime
 		, endTime
 		, _.first(ids)

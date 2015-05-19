@@ -2,3 +2,4 @@ db_config.js
 *.csv
 *.swp
 node_modules/
+.DS_Store
