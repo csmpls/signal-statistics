@@ -74,12 +74,16 @@ format = (arrayOfEntries) ->
 #  handy reference
 #
 MIDSgroup1 = 
-	start: '2015-05-09T23:31:57.419+00:00'
-	end: '2015-05-09T23:36:57.889+00:00'
+	start: '2015-05-09T23:32:36+00:00'
+	end: '2015-05-09T23:37:56+00:00'
 
 MIDSgroup2 = 
-	start: '2015-05-09T23:43:34.405+00:00'
-	end:'2015-05-09T23:48:34.35+00:00'
+	start: '2015-05-09T23:43:34+00:00'
+	end:'2015-05-09T23:48:54+00:00'
+
+allTime = 
+	start: '2015-05-09T23:26:34+00:00'
+	end: '2015-05-09T24:00:00+00:00' 
 
 idsGroup1 = _.map(
 	[334,389,497,523,604,613,659,677,695,721,749,758,244,235,433,640,172,587,226,361,442,505,703,190,424,415,127,136,488]
@@ -88,13 +92,15 @@ idsGroup2 = _.map(
 	[118,262,280,325,343,370,398,532,541,569,578,631,668,686,253,299,154,514,145,208,596,712,271,352,307,316,406,730]	
 	, (id) -> String(id))	
 
+
+
 #
 # config
 #
-PATH_TO_LOGFILE = './timelog1.csv'
-IDS_OF_INTEREST = idsGroup1
-START_TIME = MIDSgroup1.start
-END_TIME = MIDSgroup1.end
+PATH_TO_LOGFILE = './timelog-alltime.csv'
+IDS_OF_INTEREST = _.union([idsGroup1,idsGroup2])
+START_TIME = allTime.start
+END_TIME = allTime.end
 SLICE_RESOLUTION_IN_SECONDS = 1
 
 #

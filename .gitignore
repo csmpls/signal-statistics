@@ -3,3 +3,4 @@ db_config.js
 *.swp
 node_modules/
 .DS_Store
+build-tmp/
